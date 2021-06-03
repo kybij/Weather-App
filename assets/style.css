@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
+body {
+    font-family:"Teko", sans-serif;
+    background-image: url("https://source.unsplash.com/1600x900/?landscape");
+}
+
+.header {
+    font-size: 50px;
+    background-color:#000000d0;
+    color:black;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+    color: whitesmoke;
+
+}
+
+.search {
+    background-color:#000000d0;
+    color: whitesmoke;
+    margin-left: 15px;
+    margin-top: 15px;
+    padding: 2em;
+    border-radius: 30px;;
+}
+.find {
+    font-size: 40px;
+    padding-right: 30px;
+    
+}
+
+.btn svg { 
+    height: 30px;
+    width: 30px;
+}
+
+.search-bar {
+    border: none;
+    outline: none;
+    padding: 12px;
+    border-radius: 18px;
+    background-color: #7c7c7c2b;
+    color:white;
+    font-size: 20px;
+    width: 80%;
+
+}
