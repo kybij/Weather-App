@@ -4,8 +4,7 @@ body {
     background-image: url("https://source.unsplash.com/1600x900/?landscape");
 }
 
-.header {
-    font-size: 50px;
+header {
     background-color:#000000d0;
     color:black;
     margin-left: 15px;
@@ -15,11 +14,14 @@ body {
 
 }
 
+.dashboard {
+    font-size: 60px;
+}
 .search {
     background-color:#000000d0;
     color: whitesmoke;
     margin-left: 15px;
-    margin-top: 15px;
+    margin-top: 2em;
     padding: 2.5em;
     border-radius: 30px;
 }
@@ -49,7 +51,7 @@ body {
     background-color:#000000d0;
     color: whitesmoke;
     margin-right: 15px;
-    margin-top: 15px;
+    margin-top: 2em;
     padding: 1em;
     border-radius: 30px;
     text-align: center;
@@ -68,4 +70,31 @@ body {
 
 .description {
     text-transform: capitalize;
+}
+
+.recent {
+    background-color:#000000d0;
+    color: whitesmoke;
+    margin-left: 15px;
+    margin-top: 2.6em;
+    padding: 1em;
+    padding-bottom: 10em;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.recentSearch {
+    margin-top: 12px;
+}
+
+.fiveDay {
+    background-color:#000000d0;
+    color: whitesmoke;
+    margin-right: 15px;
+    margin-top: 1.5em;
+    padding: 1em;
+    padding-bottom: 7em;
+    border-radius: 30px;
+    text-align: center;
+    
 }

@@ -12,16 +12,20 @@
 </head>
 
 <body>
-    <header class="header text-center">Weather Dashboard</header>
+    <header>
+        <h1 class="dashboard text-center">Weather Dashboard</h1>
+        <h3 class="date text-center">
+        </h3>
+    </header>
     <div class="row">
         <div class="col-sm-4">
             <div class="search">
                 <h2 class="find text-center">Search for a City</h2>
                 <form id="user-form" class="card-body text-center">
                     <input type="text" class="search-bar" placeholder="Search">
-                    <button type="button" class="btn"><svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1"
-                            viewBox="0 0 48 48" enable-background="new 0 0 48 48" height="1.5em" width="1.5em"
-                            xmlns="http://www.w3.org/2000/svg">
+                    <button type="button" class="btn"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                            version="1" viewBox="0 0 48 48" enable-background="new 0 0 48 48" height="1.5em"
+                            width="1.5em" xmlns="http://www.w3.org/2000/svg">
                             <g fill="#616161">
                                 <rect x="34.6" y="28.1" transform="matrix(.707 -.707 .707 .707 -15.154 36.586)"
                                     width="4" height="17"></rect>
@@ -51,10 +55,22 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="recent">
+                <h3 class="recentSearch">Recent Searches</h3>
+                <div class="one"></div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <h3 class="fiveDay">5 day Forecast</h3>
+        </div>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./assets/js.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js.js"></script>
 </body>
 
 </html>
