@@ -19,8 +19,8 @@ let weather = {
         const { speed } = data.wind;
         console.log(name, icon, description, temp, humidity, speed)
         document.querySelector(".city").innerText = "Weather in " + name;
-        // document.querySelector(".icon").src =
-        // "http://openweathermap.org/img/wn/" + icon + ".png"
+        document.querySelector(".icon").src =
+            "http://openweathermap.org/img/w/" + icon + ".png"
         document.querySelector(".description").innerText = description
         document.querySelector(".temp").innerText = temp + " °F"
         document.querySelector(".humidity").innerText = "humidity: " + humidity + "%"
@@ -43,7 +43,7 @@ var btn = document.querySelector(".btn")
 var text = document.querySelector(".one")
 var storedInput = localStorage.getItem("textinput")
 
-if(search) {
+if (search) {
     text.textContent = storedInput
 }
 search.addEventListener("input", letter => {
@@ -51,11 +51,11 @@ search.addEventListener("input", letter => {
 })
 
 const savelocalStorage = () => {
-    localStorage.setItem ("textinput", text.textContent)
+    localStorage.setItem("textinput", text.textContent)
 }
 
 
- btn.addEventListener("click", savelocalStorage)
+btn.addEventListener("click", savelocalStorage)
 
 
 // search cities
