@@ -78,6 +78,17 @@ let weather = {
             document.querySelector(".temp").innerText = temp + " °F"
             document.querySelector(".humidity").innerText = "humidity: " + humidity + "%"
             document.querySelector(".wind").innerText = "Wind speed: " + speed + " MPH"
+            
+            var UVIndex = uvData.current.uvi
+            if (UVIndex < 4) {
+                UVIndex.setAttribute("class", "badge badge-success");
+              } else if (UVIndex < 8) {
+                UVIndex.setAttribute("class", "badge badge-warning");
+              } else {
+                UVIndex.setAttribute("class", "badge badge-danger");
+              }
+            append(UVIndex)
+            
         })
 
 
