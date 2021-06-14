@@ -9,7 +9,45 @@ let weather = {
             + this.apiKey
         )
             .then((response) => response.json())
-            .then((data) => this.displayWeather(data));
+            .then((data) => {
+                this.displayWeather(data)
+                this.fiveDay(city)
+            } );
+
+    },
+    fiveDay: function (city) {
+        fetch(
+            "http://api.openweathermap.org/data/2.5/forecast?q="
+            + city
+            + "&units=imperial&appid="
+            + this.apiKey
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                  var fiveDayForecast = data.list
+                  for (let i = 4; i < fiveDayForecast.length; i= i+8) {
+                      
+                      console.log(fiveDayForecast[i])
+                      let date = moment (fiveDayForecast[i].dt,"X").format(" MMMM Do YYYY");
+                      let icon =  "http://openweathermap.org/img/w/" + fiveDayForecast[i].weather[0].icon + ".png" 
+                      let temp = fiveDayForecast[i].main.temp
+                      let humidity = fiveDayForecast[i].main.humidity
+                      console.log(date,icon, temp, humidity)
+                      document.querySelector(".card-deck")
+                      .innerHTML+=`
+                      <div class="card">
+                      <h5 class="card-title"> ${date}</h5>
+                  <div class="card-body">
+                  <img class="card-img-top" src="${icon}" alt="Card image cap">
+                    <p class="card-text">temp:${temp}</p>
+                    <p class="card-text">humidity:${humidity}</p>
+                  </div>
+                </div>
+                      
+                      `
+                  }
+            })
     },
 
     displayWeather: function (data) {
@@ -17,14 +55,32 @@ let weather = {
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
-        console.log(name, icon, description, temp, humidity, speed)
-        document.querySelector(".city").innerText = "Weather in " + name;
-        document.querySelector(".icon").src =
-            "http://openweathermap.org/img/w/" + icon + ".png"
-        document.querySelector(".description").innerText = description
-        document.querySelector(".temp").innerText = temp + " °F"
-        document.querySelector(".humidity").innerText = "humidity: " + humidity + "%"
-        document.querySelector(".wind").innerText = "Wind speed: " + speed + " MPH"
+        var lat = data.coord.lat;
+        var lon = data.coord.lon;
+        var apiKey = "fd05b85bcfc1b3e8218a8132d1f1dbb5"
+        fetch("https://api.openweathermap.org/data/2.5/onecall?lat="
+            + lat
+            + "&lon="
+            + lon
+            + "&appid="
+            + apiKey
+        ).then(function (response){
+            return response.json()
+        })
+        .then (function(uvData){
+            console.log(uvData)
+            console.log(name, icon, description, temp, humidity, speed)
+            document.querySelector(".uv").innerText = "UV Index: " +uvData.current.uvi
+            document.querySelector(".city").innerText = "Weather in " + name;
+            document.querySelector(".icon").setAttribute("src",
+                "http://openweathermap.org/img/w/" + icon + ".png")
+            document.querySelector(".description").innerText = description
+            document.querySelector(".temp").innerText = temp + " °F"
+            document.querySelector(".humidity").innerText = "humidity: " + humidity + "%"
+            document.querySelector(".wind").innerText = "Wind speed: " + speed + " MPH"
+        })
+
+
     },
     search: function () {
         this.fetchWeather(document.querySelector(".search-bar").value);
@@ -63,8 +119,4 @@ document.querySelector(".btn").addEventListener("click", function () {
     weather.search()
 });
 
-// document.querySelector(".search-bar").addEventListener("keypress", function (event) {
-//     if (event.key === "Enter") {
-//         weather.search()
-//     }
-// });
+

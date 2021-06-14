@@ -52,12 +52,16 @@ header {
     color: whitesmoke;
     margin-right: 15px;
     margin-top: 2em;
-    padding: 1em;
+    padding: .8em;
     border-radius: 30px;
     text-align: center;
 
 }
 
+.card.img.top {
+    width: 50%;
+    margin: auto;
+}
 .city {
    text-align: center;
    font-size: 40px;
@@ -91,10 +95,8 @@ header {
 .fiveDay {
     background-color:#000000d0;
     color: whitesmoke;
-    margin-right: 15px;
     margin-top: 1.5em;
-    padding: 1em;
-    padding-bottom: 7em;
+    padding: 1em;;
     border-radius: 30px;
     text-align: center;
     
