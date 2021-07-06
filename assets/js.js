@@ -1,3 +1,5 @@
+ var cities = JSON.parse(localStorage.getItem("textinput")) || []
+
 // current weather/search
 let weather = {
     apiKey: "fd05b85bcfc1b3e8218a8132d1f1dbb5",
@@ -11,7 +13,16 @@ let weather = {
             .then((response) => response.json())
             .then((data) => {
                 this.displayWeather(data)
+                console.log(city)
+                if (cities.includes(city)=== false){
+                    cities.push(city)
+                    console.log(cities)
+                    localStorage.setItem("textinput", JSON.stringify(cities))
+                 
+                }
+                displayBtns(cities);
                 this.fiveDay(city)
+               
             });
 
     },
@@ -26,6 +37,7 @@ let weather = {
             .then((data) => {
                 console.log(data)
                 var fiveDayForecast = data.list
+                $(".card-deck").empty()
                 for (let i = 4; i < fiveDayForecast.length; i = i + 8) {
 
                     console.log(fiveDayForecast[i])
@@ -70,7 +82,7 @@ let weather = {
             .then(function (uvData) {
                 console.log(uvData)
                 console.log(name, icon, description, temp, humidity, speed)
-                document.querySelector(".uv").innerText = "UV Index: " + uvData.current.uvi
+                
                 document.querySelector(".city").innerText = "Weather in " + name;
                 document.querySelector(".icon").setAttribute("src",
                     "http://openweathermap.org/img/w/" + icon + ".png")
@@ -88,16 +100,16 @@ let weather = {
                 } else {
                     UVHtml.setAttribute("class", "badge badge-danger");
                 }
-                currentUVEl.innerHTML = "UV Index: ";
-                currentUVEl.append(UVIndex);
-                currentUVEl.append(UVIndex)
+                UVHtml.innerHTML = "UV Index: ";
+                UVHtml.append(UVIndex);
 
+ 
             })
 
 
     },
-    search: function () {
-        this.fetchWeather(document.querySelector(".search-bar").value);
+    search: function (cityName) {
+        this.fetchWeather(cityName);
     }
 };
 
@@ -111,26 +123,49 @@ $(".date").text(output)
 var search = document.querySelector(".search-bar")
 var btn = document.querySelector(".btn")
 var text = document.querySelector(".one")
-var storedInput = localStorage.getItem("textinput")
+// var storedInput = localStorage.getItem("textinput")
 
-if (search) {
-    text.textContent = storedInput
+// if (search) {
+//     text.textContent = storedInput
+// }
+// search.addEventListener("input", letter => {
+//     text.textContent = letter.target.value
+// })
+
+// const savelocalStorage = () => {
+//     localStorage.setItem("textinput", text.textContent)
+// }
+
+
+// btn.addEventListener("click", savelocalStorage)
+
+function displayBtns (cities) {
+    var cityList = $(".list");
+    console.log(cityList)
+    cityList.empty() 
+    
+    for (let index = 0; index < cities.length; index++) {
+        var list = $("<li>").addClass("listItem").text(cities[index]);
+        list.on("click", function () {
+            weather.search(this.textContent)
+        })
+        cityList.append(list)
+        }
+
+        
 }
-search.addEventListener("input", letter => {
-    text.textContent = letter.target.value
-})
-
-const savelocalStorage = () => {
-    localStorage.setItem("textinput", text.textContent)
-}
-
-
-btn.addEventListener("click", savelocalStorage)
 
 
 // search cities
 document.querySelector(".btn").addEventListener("click", function () {
-    weather.search()
+    weather.search(document.querySelector(".search-bar").value)
+    
 });
 
+ 
+    
+    displayBtns(cities);
+    weather.search(cities[cities.length-1])
 
+
+// c
