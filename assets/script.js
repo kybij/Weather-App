@@ -5,7 +5,7 @@ let weather = {
     apiKey: "fd05b85bcfc1b3e8218a8132d1f1dbb5",
     fetchWeather: function (city) {
         fetch(
-            "http://api.openweathermap.org/data/2.5/weather?q="
+            "https://api.openweathermap.org/data/2.5/weather?q="
             + city
             + "&units=imperial&appid="
             + this.apiKey
@@ -28,7 +28,7 @@ let weather = {
     },
     fiveDay: function (city) {
         fetch(
-            "http://api.openweathermap.org/data/2.5/forecast?q="
+            "https://api.openweathermap.org/data/2.5/forecast?q="
             + city
             + "&units=imperial&appid="
             + this.apiKey
@@ -42,7 +42,7 @@ let weather = {
 
                     console.log(fiveDayForecast[i])
                     let date = moment(fiveDayForecast[i].dt, "X").format(" MMMM Do YYYY");
-                    let icon = "http://openweathermap.org/img/w/" + fiveDayForecast[i].weather[0].icon + ".png"
+                    let icon = "https://openweathermap.org/img/w/" + fiveDayForecast[i].weather[0].icon + ".png"
                     let temp = fiveDayForecast[i].main.temp
                     let humidity = fiveDayForecast[i].main.humidity
                     console.log(date, icon, temp, humidity)
@@ -85,7 +85,7 @@ let weather = {
                 
                 document.querySelector(".city").innerText = "Weather in " + name;
                 document.querySelector(".icon").setAttribute("src",
-                    "http://openweathermap.org/img/w/" + icon + ".png")
+                    "https://openweathermap.org/img/w/" + icon + ".png")
                 document.querySelector(".description").innerText = description
                 document.querySelector(".temp").innerText = temp + " °F"
                 document.querySelector(".humidity").innerText = "humidity: " + humidity + "%"
@@ -123,21 +123,6 @@ $(".date").text(output)
 var search = document.querySelector(".search-bar")
 var btn = document.querySelector(".btn")
 var text = document.querySelector(".one")
-// var storedInput = localStorage.getItem("textinput")
-
-// if (search) {
-//     text.textContent = storedInput
-// }
-// search.addEventListener("input", letter => {
-//     text.textContent = letter.target.value
-// })
-
-// const savelocalStorage = () => {
-//     localStorage.setItem("textinput", text.textContent)
-// }
-
-
-// btn.addEventListener("click", savelocalStorage)
 
 function displayBtns (cities) {
     var cityList = $(".list");
