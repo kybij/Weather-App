@@ -1,4 +1,4 @@
- var cities = JSON.parse(localStorage.getItem("textinput")) || []
+var cities = localStorage.getItem("textinput")? JSON.parse(localStorage.getItem("textinput")) : []
 
 // current weather/search
 let weather = {
@@ -165,7 +165,10 @@ document.querySelector(".btn").addEventListener("click", function () {
  
     
     displayBtns(cities);
-    weather.search(cities[cities.length-1])
+    if ( cities.length != 0) {
+        weather.search(cities[cities.length-1])
+    }
+ 
 
 
 // c
