@@ -2,6 +2,8 @@
 body {
     font-family:"Teko", sans-serif;
     background-image: url("https://source.unsplash.com/1600x900/?landscape");
+    background-repeat: no-repeat;
+    background-size: 185vh;
 }
 
 header {
@@ -68,6 +70,9 @@ header {
     border-top-left-radius: calc(.25rem - 1px);
     border-top-right-radius: calc(.25rem - 1px);
 }
+.card-body {
+    padding-bottom:65px
+}
 .city {
    text-align: center;
    font-size: 40px;
@@ -88,9 +93,9 @@ header {
     background-color:#000000d0;
     color: whitesmoke;
     margin-left: 15px;
-    margin-top: 2.6em;
+    margin-top: 2em;
     padding: 1em;
-    padding-bottom: 10em;
+    padding-bottom: 15em;
     border-radius: 30px;
     text-align: center;
 }
@@ -102,8 +107,8 @@ header {
 .fiveDay {
     background-color:#000000d0;
     color: whitesmoke;
-    margin-top: 1.5em;
-    padding: 1em;;
+    margin-top: 2rem;
+    padding: 1rem;;
     border-radius: 30px;
     text-align: center;
     
